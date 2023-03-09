@@ -36,5 +36,9 @@ PUT request gonderdigimizde
         //send the request And get the response
         Response response =given().contentType(ContentType.JSON).when().body(obj.toString()).put(url);
         response.prettyPrint();
+
+        //Do assertion
+
+        response.then().assertThat().statusCode(200).contentType(ContentType.JSON).header("Server","cloudflare").statusLine("HTTP/1.1 200 OK");
     }
 }
