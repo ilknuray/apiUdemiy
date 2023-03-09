@@ -1,3 +1,4 @@
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
 
@@ -18,6 +19,13 @@ public class C3_ResponseDegerleriniOtomasyonileTestEtme {
         //set the expected data
         //set the request and get the response
         Response response=given().when().get(url);
+
+        response.then().
+                assertThat()
+                .contentType(ContentType.JSON)
+                .statusCode(200)
+                .statusLine("HTTP/1.1 200 OK")
+                .header("Server","Cowboy");
     }
 
 }
