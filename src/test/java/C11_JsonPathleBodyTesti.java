@@ -66,6 +66,5 @@ gonderdigimizde
                 .body("booking.firstname", equalTo("Ahmet"),
                         "booking.lastname",equalTo("Bulut"),
                         "booking.bookingdates.checkin",equalTo("2023-01-10"));
-
     }
 }
