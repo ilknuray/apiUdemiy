@@ -48,5 +48,6 @@ public class C8_Post_ResponseBodyTesti {
                 .body("title", Matchers.equalTo("API"))
                 .body("userId",Matchers.lessThan(100))
                 .body("body",Matchers.containsString("API"));
+
     }
 }
