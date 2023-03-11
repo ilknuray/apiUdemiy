@@ -1,3 +1,5 @@
+package tests;
+
 import baseUrl.JsonPlaceHolderBaseUrl;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
