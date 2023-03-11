@@ -8,6 +8,6 @@ public class RestFullHerokuBaseUrl {
    protected RequestSpecification specHeroku;
 
     public void setUp(){
-        specHeroku=new RequestSpecBuilder().setBaseUri("https://restful-booker.herokuapp.com").build();
+        specHeroku=new RequestSpecBuilder().setBaseUri("https://restful-booker.herokuapp.com ").build();
     }
 }
