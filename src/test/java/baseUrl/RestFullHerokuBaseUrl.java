@@ -2,12 +2,15 @@ package baseUrl;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
+import org.junit.Before;
 
 public class RestFullHerokuBaseUrl {
 
-   protected RequestSpecification specHeroku;
+    protected RequestSpecification specHeroku;
 
-    public void setUp(){
-        specHeroku=new RequestSpecBuilder().setBaseUri("https://restful-booker.herokuapp.com ").build();
+
+    @Before
+    public void setUp() {
+        specHeroku = new RequestSpecBuilder().setBaseUri("https://restful-booker.herokuapp.com").build();
     }
 }
