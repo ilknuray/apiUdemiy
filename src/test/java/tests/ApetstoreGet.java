@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class ApetstoreGet extends PetStoreBaseUrl {
     /*
@@ -65,6 +66,11 @@ public class ApetstoreGet extends PetStoreBaseUrl {
         response.then().assertThat().statusCode(200).contentType(ContentType.JSON);
 
         JsonPath jsonPath=response.jsonPath();
-        Assert.assertEquals(expectedData.get("id"),jsonPath.get("id"));
+        assertEquals(expectedData.get("id"),jsonPath.get("id"));
+        assertEquals(expectedData.getJSONObject("category").get("id"),jsonPath.get("category.id"));
+        assertEquals(expectedData.getJSONObject("category").get("name"),jsonPath.get("category.name"));
+        assertEquals(expectedData.get("name"),jsonPath.get("name"));
+        //assertEquals(expectedData.getJSONObject("tags").get("id"),jsonPath.get("tags.id"));
+
     }
 }
