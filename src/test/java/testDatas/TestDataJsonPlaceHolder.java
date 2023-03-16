@@ -11,6 +11,6 @@ public class TestDataJsonPlaceHolder {
         expectedData.put("title","dolor sint quo a velit explicabo quia nam");
         expectedData.put("body","eos qui et ipsum ipsam suscipit aut\nsed omnis non odio\nexpedita ear um mollitia molestiae aut atque rem suscipit\nnam impedit esse");
 
-        return expectedData22();
+        return expectedData;
     }
 }
