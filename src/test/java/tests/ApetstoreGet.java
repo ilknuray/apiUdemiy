@@ -3,6 +3,8 @@ package tests;
 import baseUrl.PetStoreBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
@@ -33,6 +35,27 @@ public class ApetstoreGet extends PetStoreBaseUrl {
         //set the url
         specPetStore.pathParam("pp1","1");
         //set the expected data
+        JSONObject expectedData=new JSONObject();
+        JSONObject category=new JSONObject();
+        category.put("id", 1);
+        category.put("name", "string");
+        JSONArray tags=new JSONArray();
+        JSONObject tagsId=new JSONObject();
+        tagsId.put("id", 1);
+        tagsId.put("name", "string");
+        tags.put(tagsId);
+        JSONArray photo=new JSONArray();
+        photo.put("string");
+
+        expectedData.put("id", 1);
+        expectedData.put("category",category);
+        expectedData.put("name", "doggie");
+        expectedData.put("photoUrls",photo);
+        expectedData.put("tags",tags);
+        expectedData.put("status", "available");
+        //System.out.println("expected data : "+expectedData);
+
+
         //send the request and get the response
         Response response=given().spec(specPetStore).when().get("/{pp1}");
         response.prettyPrint();
