@@ -2,9 +2,11 @@ package tests;
 
 import baseUrl.PetStoreBaseUrl;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
@@ -61,5 +63,8 @@ public class ApetstoreGet extends PetStoreBaseUrl {
         response.prettyPrint();
         //do assertion
         response.then().assertThat().statusCode(200).contentType(ContentType.JSON);
+
+        JsonPath jsonPath=response.jsonPath();
+        Assert.assertEquals(expectedData.get("id"),jsonPath.get("id"));
     }
 }
