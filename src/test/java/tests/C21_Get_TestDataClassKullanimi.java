@@ -43,6 +43,7 @@ quas\nvoluptatem eum voluptas qui\nunde omnis voluptatem iure quasi maxime volup
         assertEquals(expectedData.getInt("userId"),jsonPath.getInt("userId"));
         assertEquals(expectedData.getInt("id"),jsonPath.getInt("id"));
         assertEquals(expectedData.getString("title"),jsonPath.getString("title"));
+        assertEquals(expectedData.getString("body"),jsonPath.getString("body"));
 
 
     }
