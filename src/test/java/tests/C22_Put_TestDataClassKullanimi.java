@@ -9,6 +9,7 @@ import org.junit.Test;
 import testDatas.TestDataJsonPlaceHolder;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class C22_Put_TestDataClassKullanimi extends JsonPlaceHolderBaseUrl {
     /*
@@ -46,6 +47,9 @@ Request Body
         Response response=given().spec(specJson).when().contentType(ContentType.JSON).body(requestBody.toString()).put("{pp1}/{pp2}");
 
         //do assertion
-        Assert.assertEquals();
+        assertEquals(TestDataJsonPlaceHolder.basariliStatusCodu,response.statusCode());
+        assertEquals(TestDataJsonPlaceHolder.contentType,response.contentType());
+        assertEquals(TestDataJsonPlaceHolder.Connectionheader,response.header("Connection"));
+
     }
 }
