@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 public class TestDataJsonPlaceHolder {
     public static  int basariliStatusCodu=200;
-    public static String contentType="“application/json; charset=utf-8";
+    public static String contentType="application/json; charset=utf-8";
     public static String Connectionheader="keep-alive";
     public static JSONObject expectedData22(){
         JSONObject expectedData=new JSONObject();

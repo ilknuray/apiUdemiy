@@ -42,7 +42,7 @@ Request Body
         specJson.pathParams("pp1","posts","pp2",70);
         JSONObject requestBody= TestDataJsonPlaceHolder.responseJsonBodyOlustur(10,70,"Ahmet","Merhaba");
         //set the expected data
-        JSONObject expectedData=TestDataJsonPlaceHolder.responseJsonBodyOlustur(70,10,"Ahmet","Merhaba");
+        JSONObject expectedData=TestDataJsonPlaceHolder.responseJsonBodyOlustur(10,70,"Ahmet","Merhaba");
 
         //send the request and get the response
         Response response=given().spec(specJson).when().contentType(ContentType.JSON).body(requestBody.toString()).put("{pp1}/{pp2}");
@@ -54,6 +54,8 @@ Request Body
         JsonPath jsonPath=response.jsonPath();
         assertEquals(expectedData.getInt("userId"),jsonPath.getInt("userId"));
         assertEquals(expectedData.getInt("id"),jsonPath.getInt("id"));
+        assertEquals(expectedData.getString("title"),jsonPath.getString("title"));
+        assertEquals(expectedData.getString("body"),jsonPath.getString("body"));
 
     }
 }
