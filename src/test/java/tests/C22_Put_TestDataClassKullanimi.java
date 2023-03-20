@@ -2,6 +2,7 @@ package tests;
 
 import baseUrl.JsonPlaceHolderBaseUrl;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 import org.junit.Assert;
@@ -50,6 +51,9 @@ Request Body
         assertEquals(TestDataJsonPlaceHolder.basariliStatusCodu,response.statusCode());
         assertEquals(TestDataJsonPlaceHolder.contentType,response.contentType());
         assertEquals(TestDataJsonPlaceHolder.Connectionheader,response.header("Connection"));
+        JsonPath jsonPath=response.jsonPath();
+        assertEquals(expectedData.getInt("userId"),jsonPath.getInt("userId"));
+        assertEquals(expectedData.getInt("id"),jsonPath.getInt("id"));
 
     }
 }
