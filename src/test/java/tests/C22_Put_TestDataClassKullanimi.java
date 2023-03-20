@@ -4,6 +4,7 @@ import baseUrl.JsonPlaceHolderBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.JSONObject;
+import org.junit.Assert;
 import org.junit.Test;
 import testDatas.TestDataJsonPlaceHolder;
 
@@ -43,5 +44,8 @@ Request Body
 
         //send the request and get the response
         Response response=given().spec(specJson).when().contentType(ContentType.JSON).body(requestBody.toString()).put("{pp1}/{pp2}");
+
+        //do assertion
+        Assert.assertEquals();
     }
 }
