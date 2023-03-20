@@ -2,9 +2,15 @@ package tests;
 
 import baseUrl.JsonPlaceHolderBaseUrl;
 import io.restassured.internal.mapping.Jackson1Mapper;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import org.json.JSONObject;
+import org.junit.Assert;
 import org.junit.Test;
 import testDatas.TestDataJsonPlaceHolder;
+
+import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class C21_Get_TestDataClassKullanimi extends JsonPlaceHolderBaseUrl {
     /*
@@ -22,13 +28,22 @@ quas\nvoluptatem eum voluptas qui\nunde omnis voluptatem iure quasi maxime volup
      */
 
     @Test
-    public void test(){
+    public void test() {
         //set the url
-        specJson.pathParams("pp1","posts","pp2",40);
+        specJson.pathParams("pp1", "posts", "pp2", 40);
 
         //set the expected data
-        JSONObject expectedData= TestDataJsonPlaceHolder.responseJsonBodyOlustur(4,40,"enim quo cumque","ut voluptatum aliquid illo tenetur nemo sequi quo facilis\nipsum rem optio mollitia quas \nvoluptatem eum voluptas qui\nunde omnis voluptatem iure quasi maxime voluptas nam");
-        System.out.println(expectedData);
+        JSONObject expectedData = TestDataJsonPlaceHolder.responseJsonBodyOlustur(4, 40, "enim quo cumque", "ut voluptatum aliquid illo tenetur nemo sequi quo facilis\nipsum rem optio mollitia quas \nvoluptatem eum voluptas qui\nunde omnis voluptatem iure quasi maxime voluptas nam");
+        //send the request and get the response
+        Response response = given().spec(specJson).when().get("{pp1}/{pp2}");
+
+        //do assertion
+        JsonPath jsonPath=response.jsonPath();
+        assertEquals(TestDataJsonPlaceHolder.basariliStatusCodu,response.statusCode());
+        assertEquals(expectedData.getInt("userId"),jsonPath.getInt("userId"));
+        assertEquals(expectedData.getInt("id"),jsonPath.getInt("id"));
+
+
     }
 
 
